@@ -2,7 +2,9 @@ import express from 'express'
 const router = express.Router()
 
 router.get('/blogpost/all', (req,res) => {
-    res.send("all ids")
+    res.send({
+        "he": "just like me"
+    })
 })
 
 router.get('/blogpost/:id/read', (req, res) => {
