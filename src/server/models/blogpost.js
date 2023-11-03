@@ -1,8 +1,7 @@
-import mongoose from 'mongoose'
-mongoose.set("strictQuery", false)
-mongoose.connect("mongodb://root:abc123@mongo:27017/")
 
-const Schema = mongoose.Schema;
+import db from "../adapters/orm";
+
+const Schema = db.Schema;
 
 
 const BlogPostSchema = new Schema({
@@ -16,5 +15,5 @@ const BlogPostSchema = new Schema({
   tags: [String],
 });
 
-const BlogPostModel = mongoose.model("BlogPost", BlogPostSchema);
+const BlogPostModel = db.model("BlogPost", BlogPostSchema);
 export default BlogPostModel;

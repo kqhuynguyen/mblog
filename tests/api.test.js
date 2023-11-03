@@ -1,23 +1,25 @@
 import app from '../src/server/app'
 import request from 'supertest'
-import mongoose from 'mongoose'
-import BlogPostModel from '../src/server/models/blogpost'
-import { initializeBlogDatabase } from './utils/blogpost'
+import db from '../src/server/adapters/orm'
+import { initBlogCollection, deleteBlogCollection } from './utils/blogpost'
 
 beforeAll(done => {
   done()
 })
 
 afterAll(done => {
-  mongoose.connection.close()
+  db.connection.close()
   done()
 })
 
 
 describe('Test blogpost endpoint', () => {
-  
+
   beforeAll(() => {
-    return initializeBlogDatabase();
+    return deleteBlogCollection()
+    // .then(res => {
+    //   return initBlogCollection()
+    // })
   });
 
   test("GET /api/blogpost/all should return all blogpost IDs", () => {
@@ -25,17 +27,17 @@ describe('Test blogpost endpoint', () => {
       .get("/api/blogpost/all")
       .expect(200)
       .expect('Content-Type', /json/)
-      .expect({
-        blogpost_ids: []
-      })
+      .expect(response => {
+        expect(response.body.blogpost_ids).toBeInstanceOf(Array)
+      }) 
   })
   test("GET /api/blogpost/:id/read should return all blogpost with that id", () => {
     return request(app)
-      .get("/api/blogpost/0/read")
+      .get("/api/blogpost/65451a4b0e1bd1cfac438b90/read")
       .expect(200)
       .expect('Content-Type', /json/)
-      .expect({
-        _id: 0
+      .expect(response => {
+        expect(respponse.body.title).toBe("Blog post 1")
       })
   })
 });

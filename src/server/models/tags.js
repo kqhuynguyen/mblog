@@ -1,9 +1,7 @@
-import mongoose from 'mongoose'
 
-mongoose.set("strictQuery", false)
-mongoose.connect("mongodb://root:abc123@mongo:27017/myblgs")
+import db from "../adapters/orm";
 
-const TagSchema = new Schema({
+const TagSchema = new db.Schema({
     tag_name: {
         type: String,
         minLength: 1,
@@ -11,5 +9,5 @@ const TagSchema = new Schema({
     }
 });
 
-const TagModel = mongoose.model("Tag", TagSchema);
+const TagModel = db.model("Tag", TagSchema);
 export default TagModel;
