@@ -6,13 +6,18 @@ services:
         - DOCKER_BUILDKIT=1 
     ports:
       - 3000:3000
+    command: yarn install && yarn test
 
   mongo:
     image: mongo
     restart: always
     environment:
+      MONGO_INITDB_DATABASE: myblgs
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: abc123
+    volumes: 
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
       
   mongo-express:
     image: mongo-express

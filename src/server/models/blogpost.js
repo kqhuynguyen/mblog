@@ -1,6 +1,9 @@
 import mongoose from 'mongoose'
+mongoose.set("strictQuery", false)
+mongoose.connect("mongodb://root:abc123@mongo:27017/")
 
 const Schema = mongoose.Schema;
+
 
 const BlogPostSchema = new Schema({
   title: {

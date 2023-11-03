@@ -1,9 +1,15 @@
 import express from 'express'
+import BlogPostModel from '../models/blogpost'
+
 const router = express.Router()
 
 router.get('/blogpost/all', (req,res) => {
-    res.send({
-        "he": "just like me"
+    BlogPostModel
+    .find({})
+    .then((docs) => {
+        res.send({
+            "blogpost_ids": docs.map(a=>a._id)
+        })
     })
 })
 

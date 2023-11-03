@@ -1,6 +1,6 @@
 //server.js
-const app = require("./app");
+import app from './app'
 
-app.listen(5678, () => {
-  console.log("Example app listening on port 5678!");
+app.listen(3000, () => {
+  console.log("Example app listening on port 3000!");
 });
