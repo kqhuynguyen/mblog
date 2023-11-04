@@ -66,4 +66,12 @@ describe('Test blogpost endpoint', () => {
       expect(response.body._id).toBe("6545fe4e759ebfae8a04c0d8")
     })
   })
+  test("PATCH /api/blogpost/:id/update should return error on non existent document", () => {
+    return request(app)
+    .patch("/api/blogpost/654615c759b95d826b39d169/update")
+    .send({
+      body: "Chapter 0"
+    })
+    .expect(404)
+  })
 });
