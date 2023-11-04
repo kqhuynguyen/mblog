@@ -26,4 +26,11 @@ router.post('/blogpost/create', asyncHandler(async (req,res) => {
     res.send({_id: saved_doc._id})
 }))
 
+router.patch('/blogpost/:id/update', asyncHandler(async (req,res) => {
+    const doc = await BlogPostModel.findOneAndUpdate(
+        {_id: req.params.id},
+        req.body
+    )
+    res.send({_id: doc._id})
+}))
 export default router

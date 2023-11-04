@@ -54,4 +54,16 @@ describe('Test blogpost endpoint', () => {
         expect(db.isValidObjectId(response.body._id)).toBe(true)
       })
   })
+  test("PATCH /api/blogpost/:id/update should update a document and return the id", () => {
+    return request(app)
+    .patch("/api/blogpost/6545fe4e759ebfae8a04c0d8/update")
+    .send({
+      body: "Chapter 0"
+    })
+    .expect(200)
+    .expect('Content-Type', /json/)
+    .expect(response => {
+      expect(response.body._id).toBe("6545fe4e759ebfae8a04c0d8")
+    })
+  })
 });
