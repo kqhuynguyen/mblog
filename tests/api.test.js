@@ -17,9 +17,9 @@ describe('Test blogpost endpoint', () => {
 
   beforeAll(() => {
     return deleteBlogCollection()
-    // .then(res => {
-    //   return initBlogCollection()
-    // })
+    .then(res => {
+      return initBlogCollection()
+    })
   });
 
   test("GET /api/blogpost/all should return all blogpost IDs", () => {
@@ -37,7 +37,7 @@ describe('Test blogpost endpoint', () => {
       .expect(200)
       .expect('Content-Type', /json/)
       .expect(response => {
-        expect(respponse.body.title).toBe("Blog post 1")
+        expect(response.body.title).toBe("Blog post 1")
       })
   })
 });
