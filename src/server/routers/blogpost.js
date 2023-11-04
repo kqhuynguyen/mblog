@@ -18,8 +18,12 @@ router.get('/blogpost/:id/read', asyncHandler(async (req, res) => {
     res.send(doc)
 }))
 
-router.post('/blogpost/:id/create', asyncHandler(async (req,res) => {
-    res.send(`created ${req.params.id}`)
+router.post('/blogpost/create', asyncHandler(async (req,res) => {
+    const doc = BlogPostModel(
+        req.body
+    )
+    const saved_doc = await doc.save()
+    res.send({_id: saved_doc._id})
 }))
 
 export default router

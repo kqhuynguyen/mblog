@@ -2,6 +2,7 @@ import app from '../src/server/app'
 import request from 'supertest'
 import db from '../src/server/adapters/orm'
 import { initBlogCollection, deleteBlogCollection } from './utils/blogpost'
+import BlogPostModel from '../src/server/models/blogpost'
 
 beforeAll(done => {
   done()
@@ -38,6 +39,19 @@ describe('Test blogpost endpoint', () => {
       .expect('Content-Type', /json/)
       .expect(response => {
         expect(response.body.title).toBe("Blog post 1")
+      })
+  })
+  test("POST /api/blogpost/create should create a document and return the id", () => {
+    return request(app)
+      .post("/api/blogpost/create")
+      .send({
+        title: "Blog post 2",
+        body: "Title 2",
+      })
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .expect(response => {
+        expect(db.isValidObjectId(response.body._id)).toBe(true)
       })
   })
 });
