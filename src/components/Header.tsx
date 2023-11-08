@@ -2,21 +2,23 @@
 // import headerNavLinks from '@/data/headerNavLinks'
 // import Logo from '@/data/logo.svg'
 import Link from './Link'
+import Image from 'next/image'
 // import MobileNav from './MobileNav'
 // import ThemeSwitch from './ThemeSwitch'
 // import SearchButton from './SearchButton'
 
 const siteMetadata = {
-  "headerTitle": "Welcome to the blog",
+  "headerTitle": "Coding Insights",
 }
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between py-30 bg-gray-50 px-3">
+    <header className="flex items-center justify-between py-30 mb-1 bg-gray-50 px-3">
       <div>
         <Link href="/" aria-label="Nice job">
-          <div className="flex items-center py-10">
-            <div className="mr-3">
+          <div className="flex items-center py-2">
+            <div className="mr-3 ml-10 mr-5">
+              <Image  src="/coffee.png" alt="me" width="128" height="128" />
             </div>
             {typeof siteMetadata.headerTitle === 'string' ? (
               <div className="hidden h-6 text-2xl font-semibold sm:block text-amber-600">
@@ -28,7 +30,7 @@ const Header = () => {
           </div>
         </Link>
       </div>
-      <div className="flex font-bold items-right space-x-4 leading-5 sm:space-x-6">
+      <div className="flex font-bold items-right space-x-4 leading-5 sm:space-x-6 mr-10">
             <Link
               key="Home"
               href="/"
