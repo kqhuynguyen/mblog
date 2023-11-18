@@ -1,8 +1,10 @@
 import Header from '../components/Header'
 import ArticleContainer  from '../components/ArticleContainer'
-import Article from '../components/Article'
+import ArticleHead from '../components/ArticleHead'
 import '../styles/global.css'
-
+import Footer from '../components/Footer'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
 export default function RootLayout({
     children,
   }: {
@@ -15,12 +17,10 @@ export default function RootLayout({
                 <div className="justify-between font-sans flex-initial">
                   <Header/>
                 </div>
-                <ArticleContainer>
-                  <Article/>
-                  <Article/>
-                  <Article/>
-                </ArticleContainer>
+                {children}
+                <Footer/>
           </div>
+          <script src="https://kit.fontawesome.com/a9a389920a.js" crossOrigin="anonymous"></script>
         </body>
       </html>
     )
