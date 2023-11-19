@@ -1,26 +1,38 @@
-import Image from 'next/image'
-import lorem from '../utils/lorem_ipsum'
-
-
+import Image from "next/image";
+import lorem from "../utils/lorem_ipsum";
 
 const Article = () => {
-    return (<div className="flex-initial  bg-gray-50 p-4 my-10 mx-4 ">
-        <div className="flex flex-row divide-x-2">
-            <div className="w-40 h-40 flex-none flex-col">
-                <Image  src="/me.jpg" alt="me" width="128" height="128" />
-                <div className="mt-6 mr-8 text-xl text-right">User 1</div>
-                <div className="text-gray-400 mr-8 font-extralight text-right text-sm">2022-01-01 09:04</div>
-                
-            </div>
-            <div className="flex-1">
-                <div className="text-amber-700 mx-8 px-8 mb-20 pt-2 justify-center align-middle text-left text-5xl">
-                    Article Title
-                </div>
-                <div className="mx-8 px-8 my-5 text-left text-gray-500">{lorem.generateParagraphs(5)}</div>
-                <div className="mx-8 px-8 justify-center text-left text-gray-400">Read more</div>
-            </div>
-        </div>
-    </div>)
-}
+  return (
+    <div className="flex-initial flex  bg-gray-50 tablet:px-4 tablet:py-0 tablet:my-0 tablet:mx-4 px-2 ">
+      <div className="flex flex-col tablet:flex-row tablet:divide-x-2">
 
-export default Article
+        <div className="flex flex-col text-center tablet:my-10">
+          <Image
+            src="/me.jpg"
+            alt="me"
+            width="128"
+            height="128"
+            className="scale-50 self-center"
+          />
+          <div className="tablet:text-xl text-center">User 1</div>
+          <div className="text-gray-400 font-extralight text-center text-sm ">
+            2022-01-01 09:04
+          </div>
+        </div>
+        <div className="flex-1">
+          <div className="text-amber-700 text-center mb-5 tablet:mx-8 tablet:px-8  tablet:my-10 pt-2 justify-center align-middle tablet:text-left text-2xl tablet:text-5xl">
+            Article Title
+          </div>
+          <div className="text-justify tablet:mx-8 tablet:px-8 my-5  text-gray-500">
+            {lorem.generateParagraphs(5)}
+          </div>
+          <div className="tablet:mx-8 tablet:px-8 justify-center text-left text-gray-400">
+            Read more
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Article;
