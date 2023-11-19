@@ -13,12 +13,12 @@ const siteMetadata = {
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between py-30 mb-1 bg-gray-50 px-3">
-      <div>
+    <header className="flex flex-col items-center justify-between py-30 mb-1 bg-gray-50">
+      <div className="mb-8 mt-6">
         <Link href="/" aria-label="Nice job">
-          <div className="flex items-center py-2">
-            <div className="mr-3 ml-10 mr-5">
-              <Image  src="/coffee.png" alt="me" width="128" height="128" />
+          <div className="">
+            <div className="">
+              <Image className="m-auto" src="/coffee.png" alt="me" width="128" height="128" />
             </div>
             {typeof siteMetadata.headerTitle === 'string' ? (
               <div className="hidden h-6 text-2xl font-semibold sm:block text-amber-600">
@@ -30,32 +30,32 @@ const Header = () => {
           </div>
         </Link>
       </div>
-      <div className="flex font-bold items-right space-x-4 leading-5 sm:space-x-6 mr-10">
+      <div className="flex font-bold items-right space-x-8 leading-5 sm:space-x-6 mb-8 tablet:text-xl ">
             <Link
               key="Home"
               href="/"
-              className="hidden font-medium text-amber-500 sm:block back"
+              className="font-medium text-amber-500 sm:block back"
             >
               Home
             </Link>
             <Link
               key="Blog"
               href="/blog"
-              className="hidden font-medium text-amber-500 sm:block back"
+              className="font-medium text-amber-500 sm:block back"
             >
               Blogs
             </Link>
             <Link
               key="Login"
               href="/login"
-              className="hidden font-medium text-amber-500 sm:block back"
+              className="font-medium text-amber-500 sm:block back"
             >
               Login
             </Link>
             <Link
               key="About"
               href="/about"
-              className="hidden font-medium text-amber-500 sm:block back"
+              className="font-medium text-amber-500 sm:block back"
             >
               About
             </Link>
