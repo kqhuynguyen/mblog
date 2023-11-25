@@ -50,7 +50,7 @@ export default function Footer() {
               Google
             </a>
             <a href="#" className="flex my-1">
-              Stackoverflow
+              StackOverflow
             </a>
           </div>
         </div>
