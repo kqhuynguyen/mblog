@@ -32,7 +32,7 @@ export default defineConfig({
         defaultItem: () => {
           return {
             title: "Untitled",
-            createdAt: Date.now()
+            createdAt: new Date(Date.now())
           }
         },
         fields: [

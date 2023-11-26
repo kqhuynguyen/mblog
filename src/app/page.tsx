@@ -1,16 +1,17 @@
 import ArticleContainer from "../components/ArticleContainer";
+import ArticleScroller from "../components/ArticleScroller";
 import ArticleHead from "../components/ArticleHead";
 import { client } from '../../tina/__generated__/client'
+import { useEffect, useState } from 'react';
 
-async function getTinaPosts() {
+async function getInitialPost() {
   const postsResponse = await client.queries.postConnection({
-    first: 5,
+    first: 3,
   })
   const posts = postsResponse.data.postConnection.edges?.map((post) => {
-    console.log('post', post)
     return post;
   })
-  if (posts === undefined) {
+if (posts === undefined) {
     return []
   }
   return posts;
@@ -18,12 +19,8 @@ async function getTinaPosts() {
 
 
 export default async function Page() {
-  const posts = await getTinaPosts()
+  const posts = await getInitialPost()
   return <ArticleContainer>
-    {
-      posts.map(post => {
-        return <ArticleHead post={post} />
-      })
-    }
+    <ArticleScroller initialPosts={posts} />
   </ArticleContainer>
   }
